@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7d33d53aa9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body id="confetti-container">
+    <h1 id="levelMessage" class="hidden">You passed this level!</h1>
+
+    <div id="game">
+        <img id="alien" src="alien.png" alt="alien">
+        <img id="spaceship" src="ship.png" alt="ship">
+    </div>
+    <button id="run" onclick="replayMoves()">RUN <i class="fa-solid fa-play"></i></button>
+    <br>
+    <button class="move-btn" onclick="moveAlien('UP')">UP <i class="fa-solid fa-up-long"></i></button>
+    <button class="move-btn" onclick="moveAlien('DOWN')">DOWN <i class="fa-solid fa-down-long"></i></button>
+    <button class="move-btn" onclick="moveAlien('LEFT')">LEFT <i class="fa-solid fa-left-long"></i></button>
+    <button class="move-btn" onclick="moveAlien('RIGHT')">RIGHT <i class="fa-solid fa-right-long"></i></button>
+    <ul id="moves-ul">
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

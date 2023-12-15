@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200&family=Rubik:wght@300;400&family=Space+Mono:wght@700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Rubik', sans-serif;
+}
+
+#game
+{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    position: relative;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#run
+{
+    border: none;
+    border-radius: 15px;
+    background-color: #2fff00;
+}
+
+button {
+    width: 60px;
+    height: 50px;
+    text-align: center;
+    padding: 0px;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+}
+
+.move-btn
+{
+    border: none;
+    border-radius: 15px;
+    background-color: #00f2ff;
+}
+
+#alien
+{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 0.2s ease-in-out, left 0.2s ease-in-out;
+}
+
+#game p
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+#spaceship
+{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+#levelMessage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 256px;
+}
+
+@keyframes flyUp
+{
+    to
+    {
+        transform: translateY(-25vh);
+    }
+}
+.fly
+{
+    animation: flyUp 2s ease-in-out forwards;
+}
+.hidden
+{
+    transition: 0.2s;
+    display: none;
+}
+.visible
+{
+    display: block; /* or any other appropriate display property */
+}
+
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+.confetti {
+    position: absolute;
+    top: 0;
+    transform-origin: top left;
+    pointer-events: none;
+}
