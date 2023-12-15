@@ -3,6 +3,7 @@ let alien = document.getElementById('alien');
 let spaceship = document.getElementById('spaceship');
 let moves_ul = document.getElementById('moves-ul');
 let levelMessage = document.getElementById('levelMessage');
+const confettiContainer = document.getElementById('confetti-container');
 
 let gameW = 10;
 let gameH = 10;
@@ -101,35 +102,43 @@ function replayMoves() {
     });
 }
 
-function celebrate() {
-    const confettiContainer = document.getElementById('confetti-container');
-    confettiContainer.style.pointerEvents = "all";
-
-    for (let i = 0; i < 200; i++) {
-        createConfettiParticle(confettiContainer);
-    }
-}
-
-function createConfettiParticle(container) {
-    const colors = ['#f00', '#0f0', '#00f', '#ff0', '#0ff']; // Customize colors as needed
-
-    const confetti = document.createElement('div');
-    confetti.className = 'confetti';
-    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-    const size = Math.random() * 20 + 10; // Random size between 10 and 30 pixels
-    confetti.style.width = `${size}px`;
-    confetti.style.height = `${size}px`;
-
-    const left = Math.random() * 100;
-    confetti.style.left = `${left}vw`;
-
-    const animationDuration = Math.random() * 3 + 2; // Random duration between 2 and 5 seconds
-    confetti.style.animation = `fall ${animationDuration}s linear infinite`;
-
-    container.appendChild(confetti);
-
-    confetti.addEventListener('animationend', () => {
-        confetti.remove(); // Remove confetti after animation ends
+const jsConfetti = new JSConfetti();
+function celebrate()
+{
+    jsConfetti.addConfetti({
+        emojis: ['👍', '😂', '🎉', '🔥', '🥳', '😎', '👌', '💪', '🤩', '🦄', '💩'],
     });
 }
+
+// function celebrate() {
+//     const confettiContainer = document.getElementById('confetti-container');
+//     confettiContainer.style.pointerEvents = "all";
+
+//     for (let i = 0; i < 200; i++) {
+//         createConfettiParticle(confettiContainer);
+//     }
+// }
+
+// function createConfettiParticle(container) {
+//     const colors = ['#f00', '#0f0', '#00f', '#ff0', '#0ff']; // Customize colors as needed
+
+//     const confetti = document.createElement('div');
+//     confetti.className = 'confetti';
+//     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+//     const size = Math.random() * 20 + 10; // Random size between 10 and 30 pixels
+//     confetti.style.width = `${size}px`;
+//     confetti.style.height = `${size}px`;
+
+//     const left = Math.random() * 100;
+//     confetti.style.left = `${left}vw`;
+
+//     const animationDuration = Math.random() * 3 + 2; // Random duration between 2 and 5 seconds
+//     confetti.style.animation = `fall ${animationDuration}s linear infinite`;
+
+//     container.appendChild(confetti);
+
+//     confetti.addEventListener('animationend', () => {
+//         confetti.remove(); // Remove confetti after animation ends
+//     });
+// }
