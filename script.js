@@ -7,14 +7,22 @@ const confettiContainer = document.getElementById('confetti-container');
 const trash = document.getElementById('trash');
 let info = document.getElementById('info');
 
+let cubeSize = 30;
+game.style.backgroundSize = `${cubeSize}px ${cubeSize}px`;
+
+alien.style.width = `${cubeSize}px`;
+alien.style.height = `${cubeSize}px`;
+spaceship.style.width = `${cubeSize}px`;
+spaceship.style.height = `${cubeSize}px`;
+
 let gameW = rand(3, 20);
 let gameH = rand(3, 20);
 
 
 let finished = false;
 
-game.style.width = `${gameW * 20}px`;
-game.style.height = `${gameH * 20}px`;
+game.style.width = `${gameW * cubeSize}px`;
+game.style.height = `${gameH * cubeSize}px`;
 
 spaceship.id = 'spaceship';
 
@@ -23,8 +31,8 @@ game.appendChild(spaceship);
 
 let alienX = 0;
 let alienY = 0;
-alien.style.top = `${alienX * 20}px`;
-alien.style.left = `${alienY * 20}px`;
+alien.style.top = `${alienX * cubeSize}px`;
+alien.style.left = `${alienY * cubeSize}px`;
 
 let spaceshipX = rand(2, gameH);
 let spaceshipY = rand(2, gameW);
@@ -33,8 +41,8 @@ let spaceshipY = rand(2, gameW);
 
 console.log('Constrained spaceshipX:', spaceshipX, 'Constrained spaceshipY:', spaceshipY);
 
-spaceship.style.top = `${spaceshipX * 20}px`;
-spaceship.style.left = `${spaceshipY * 20}px`;
+spaceship.style.top = `${spaceshipX * cubeSize}px`;
+spaceship.style.left = `${spaceshipY * cubeSize}px`;
 
 info.innerHTML = `${gameW} x ${gameH}`
 
@@ -57,18 +65,18 @@ function moveAlien(command) {
     switch (command) {
         case 'UP':
             move.newX = alienX;
-            move.newY = alienY - 20;
+            move.newY = alienY - cubeSize;
             break;
         case 'DOWN':
             move.newX = alienX;
-            move.newY = alienY + 20;
+            move.newY = alienY + cubeSize;
             break;
         case 'LEFT':
-            move.newX = alienX - 20;
+            move.newX = alienX - cubeSize;
             move.newY = alienY;
             break;
         case 'RIGHT':
-            move.newX = alienX + 20;
+            move.newX = alienX + cubeSize;
             move.newY = alienY;
             break;
     }
@@ -78,40 +86,81 @@ function moveAlien(command) {
     moveList.push(move);
 }
 
+
+
+function startPressAndHold(command) {
+    let move = { command: command };
+
+    pressAndHoldTimer = setTimeout(function () {
+        let input = window.prompt('Enter your amount:');
+
+        if (!isNaN(input)) {
+            for (var i = 0; i <= input-1; i++) {
+                switch (command) {
+                    case 'UP':
+                        move.newX = alienX;
+                        move.newY = alienY - cubeSize;
+                        break;
+                    case 'DOWN':
+                        move.newX = alienX;
+                        move.newY = alienY + cubeSize;
+                        break;
+                    case 'LEFT':
+                        move.newX = alienX - cubeSize;
+                        move.newY = alienY;
+                        break;
+                    case 'RIGHT':
+                        move.newX = alienX + cubeSize;
+                        move.newY = alienY;
+                        break;
+                }
+                let new_li = document.createElement('li');
+                new_li.innerText = command;
+                moves_ul.appendChild(new_li);
+                moveList.push(move);
+            }
+        }
+    }, 1000);
+}
+
+function endPressAndHold() {
+    // Clear the timer when the mouse button is released or leaves the element
+    clearTimeout(pressAndHoldTimer);
+}
+
 function replayMoves() {
     moveList.forEach((move, index) => {
         setTimeout(() => {
-            if (!finished)
-            {
+            if (!finished) {
                 switch (move.command) {
                     case 'UP':
-                        alienY -= 20;
+                        alienY -= cubeSize;
                         break;
                     case 'DOWN':
-                        alienY += 20;
+                        alienY += cubeSize;
                         break;
                     case 'LEFT':
-                        alienX -= 20;
+                        alienX -= cubeSize;
                         break;
                     case 'RIGHT':
-                        alienX += 20;
+                        alienX += cubeSize;
                         break;
                 }
-            
+
                 moves_ul.getElementsByTagName('li')[index - (index !== 0)].style.color = "#000000";
                 moves_ul.getElementsByTagName('li')[index].style.color = "#34eb3d";
             }
 
             if (alienY < 0)
                 alienY = 0;
-            if (alienY > (gameH-1) * 20)
-                alienY = (gameH-1) * 20;
+            if (alienY > (gameH - 1) * cubeSize)
+                alienY = (gameH - 1) * cubeSize;
             alien.style.top = alienY + 'px';//clamp(alienY, 0, (gameW*20)-20)  + 'px';
 
             if (alienX < 0)
                 alienX = 0;
-            if (alienX > (gameW-1) * 20)
-                alienX = (gameW-1) * 20;
+            if (alienX > (gameW - 1) * cubeSize)
+                alienX = (gameW - 1) * cubeSize;
             alien.style.left = alienX + 'px';//clamp(alienX, 0, (gameH*20)-20)  + 'px';
 
             // Check if the alien reached the spaceship
@@ -151,13 +200,13 @@ trash.addEventListener('click', () => {
     alien.style.left = 0;
 });
 
-moves_ul.addEventListener('click', function(event) {
+moves_ul.addEventListener('click', function (event) {
     // Check if the clicked element is an li
     if (event.target.tagName === 'LI') {
-      // Code to execute when an li is clicked
-      console.log('Clicked on:', event.target.textContent);
+        // Code to execute when an li is clicked
+        console.log('Clicked on:', event.target.textContent);
     }
-  });
+});
 // function celebrate() {
 //     const confettiContainer = document.getElementById('confetti-container');
 //     confettiContainer.style.pointerEvents = "all";

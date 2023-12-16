@@ -33,20 +33,28 @@
         <button id="run" onclick="replayMoves()">RUN 
             <i class="fa-solid fa-play"></i>
         </button>
-        <button id="trash" onclick="clearlist()">
+        <button id="trash">
             <i class="fa-solid fa-trash"></i>
         </button>
         <br>
-        <button class="move-btn" onclick="moveAlien('UP')">UP
+        <button class="move-btn" onmousedown="startPressAndHold('UP')"
+            onmouseup="endPressAndHold('UP')" 
+            onclick="moveAlien('UP')">UP
             <i class="fa-solid fa-up-long"></i>
         </button>
-        <button class="move-btn" onclick="moveAlien('DOWN')">DOWN
+        <button class="move-btn" onmousedown="startPressAndHold('DOWN')"
+        onmouseup="endPressAndHold('DOWN')" 
+        onclick="moveAlien('DOWN')">DOWN
             <i class="fa-solid fa-down-long"></i>
         </button>
-        <button class="move-btn" onclick="moveAlien('LEFT')">LEFT
+        <button class="move-btn" onmousedown="startPressAndHold('LEFT')"
+        onmouseup="endPressAndHold('LEFT')" 
+        onclick="moveAlien('LEFT')">LEFT
             <i class="fa-solid fa-left-long"></i>
         </button>
-        <button class="move-btn" onclick="moveAlien('RIGHT')">RIGHT
+        <button class="move-btn" onmousedown="startPressAndHold('RIGHT')"
+        onmouseup="endPressAndHold('RIGHT')" 
+        onclick="moveAlien('RIGHT')">RIGHT
             <i class="fa-solid fa-right-long"></i>
         </button>
 
