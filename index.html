@@ -7,26 +7,36 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/7d33d53aa9.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="confetti.min.js"></script>
 </head>
 
 <body id="confetti-container">
-    <h1 id="levelMessage" class="hidden">You passed this level!</h1>
+    <a href="secret.html" id="secret">???</a>
+    <button id="help" onclick="location.reload();"><img src="help.png" alt="help"><br>Need Help?</button>
+    <div id="levelMessage" class="hidden" class="clickableElement">
+        <h1>You passed this level!</h1>
+        <button id="next-btn" onclick="location.reload();">
+            Next Level! <i class="fa-solid fa-right-long"></i>
+        </button>
+    </div>
+    
+    <h1 id="info">loading.....</h1>
 
     <div id="game">
         <img id="alien" src="alien.png" alt="alien">
         <img id="spaceship" src="ship.png" alt="ship">
     </div>
+    
 
-    <div id="run-container">
-        <button id="run" onclick="replayMoves()">RUN 
-            <i class="fa-solid fa-play"></i>
-        </button>
-    </div>  
     <br>
 
     <div id="buttons">
+        <button id="run" onclick="replayMoves()">RUN 
+            <i class="fa-solid fa-play"></i>
+        </button>
+        <button id="trash" onclick="clearlist()">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+        <br>
         <button class="move-btn" onclick="moveAlien('UP')">UP
             <i class="fa-solid fa-up-long"></i>
         </button>
@@ -39,10 +49,11 @@
         <button class="move-btn" onclick="moveAlien('RIGHT')">RIGHT
             <i class="fa-solid fa-right-long"></i>
         </button>
+
     </div>
 
-    <ul id="moves-ul">
-    </ul>
+    <ol id="moves-ul">
+    </ol>
 
     <script src="script.js"></script>
 </body>

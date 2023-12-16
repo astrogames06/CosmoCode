@@ -18,6 +18,18 @@ html, body {
         linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
     background-size: 20px 20px;
     margin: 10px auto;
+    z-index: -1;
+}
+
+#next-btn
+{
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 25px;
+    background-color: #00f2ff;
+    border: none;
+    border-radius: 15px;
 }
 
 #run
@@ -25,6 +37,19 @@ html, body {
     border: none;
     border-radius: 15px;
     background-color: #2fff00;
+    margin-bottom: 10px;
+    margin-right: 80px;
+    margin-left: -10px;
+}
+
+#trash
+{
+    margin-top: 10px;
+    border: none;
+    border-radius: 50px;
+    width: 50px;
+    background-color: #ff0000;
+    margin-left: 50px;
 }
 
 #run-container
@@ -78,6 +103,47 @@ button {
     background-color: red;
     text-align: center;
     font-family: 'Rubik', sans-serif;
+}
+
+#secret
+{
+    float: right;
+    opacity: 0;
+}
+
+#help
+{
+    width: 50px;
+    float: right;
+    background: none;
+    border: none;
+    color: white;
+    white-space: nowrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+#help img
+{
+    width: 30px;
+}
+
+#help:hover
+{
+    color: black;
+}
+
+#info
+{
+    background-color: #00f2ff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 15px;
+    width: 150px;
 }
 
 #spaceship
