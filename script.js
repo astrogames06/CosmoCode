@@ -81,7 +81,8 @@ function moveAlien(command) {
 function replayMoves() {
     moveList.forEach((move, index) => {
         setTimeout(() => {
-            if (!finished) {
+            if (!finished)
+            {
                 switch (move.command) {
                     case 'UP':
                         alienY -= 20;
@@ -96,9 +97,10 @@ function replayMoves() {
                         alienX += 20;
                         break;
                 }
+            
+                moves_ul.getElementsByTagName('li')[index - (index !== 0)].style.color = "#000000";
+                moves_ul.getElementsByTagName('li')[index].style.color = "#34eb3d";
             }
-            moves_ul.getElementsByTagName('li')[index - (index !== 0)].style.color = "#000000";
-            moves_ul.getElementsByTagName('li')[index].style.color = "#34eb3d";
 
             if (alienY < 0)
                 alienY = 0;
