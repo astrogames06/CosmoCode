@@ -11,7 +11,7 @@
 
 <body id="confetti-container">
     <a href="secret.html" id="secret">???</a>
-    <button id="help" onclick="location.reload();"><img src="help.png" alt="help"><br>Need Help?</button>
+    <button id="help" onclick="help()"><img src="help.png" alt="help"><br>Need Help?</button>
     <div id="levelMessage" class="hidden" class="clickableElement">
         <h1>You passed this level!</h1>
         <button id="next-btn" onclick="location.reload();">
@@ -21,12 +21,24 @@
     
     <h1 id="info">loading.....</h1>
 
-    <div id="game">
-        <img id="alien" src="alien.png" alt="alien">
-        <img id="spaceship" src="ship.png" alt="ship">
-    </div>
-    
 
+    <p class="hidden" id="widthNums"></p>
+
+
+    <ul style="list-style-type: none;
+    padding: 0; text-align: center;">
+        <li style="display: inline-block;
+        vertical-align: top; margin-right: 10px;">
+            <p class="hidden" id="heightNums"></p>
+        </li> 
+        <li style="display: inline-block; vertical-align: top;">
+            <div id="game">
+                <img id="alien" src="alien.png" alt="alien">
+                <img id="spaceship" src="ship.png" alt="ship">
+            </div>
+        </li>    
+    </ul>
+    
     <br>
 
     <div id="buttons">
@@ -39,25 +51,29 @@
         <br>
         <button class="move-btn" onmousedown="startPressAndHold('UP')"
             onmouseup="endPressAndHold('UP')" 
-            onclick="moveAlien('UP')">UP
+            onclick="moveAlien('UP')"
+            >UP
             <i class="fa-solid fa-up-long"></i>
         </button>
         <button class="move-btn" onmousedown="startPressAndHold('DOWN')"
         onmouseup="endPressAndHold('DOWN')" 
-        onclick="moveAlien('DOWN')">DOWN
+        onclick="moveAlien('DOWN')"
+        >DOWN
             <i class="fa-solid fa-down-long"></i>
         </button>
         <button class="move-btn" onmousedown="startPressAndHold('LEFT')"
         onmouseup="endPressAndHold('LEFT')" 
-        onclick="moveAlien('LEFT')">LEFT
+        onclick="moveAlien('LEFT')"
+        >LEFT
             <i class="fa-solid fa-left-long"></i>
         </button>
         <button class="move-btn" onmousedown="startPressAndHold('RIGHT')"
         onmouseup="endPressAndHold('RIGHT')" 
-        onclick="moveAlien('RIGHT')">RIGHT
+        onclick="moveAlien('RIGHT')"
+        >RIGHT
             <i class="fa-solid fa-right-long"></i>
-        </button>
-
+        </button><br>
+        <input type="text" id="amountIn" placeholder="type amount....">
     </div>
 
     <ol id="moves-ul">

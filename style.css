@@ -17,7 +17,7 @@ html, body {
         linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
     background-size: 20px 20px;
-    margin: 10px auto;
+    margin: 0 auto;
     z-index: -1;
     border-radius: 5px;
 }
@@ -73,6 +73,23 @@ button {
     text-align: center;
 }
 
+#amountIn
+{
+    margin-top: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #f6ff00;
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    height: 30px;
+    font-size: large;
+}
+
+#amountIn::placeholder
+{
+    color: rgb(0, 0, 0);
+}
+
 #moves-ul
 {
     display: grid;
@@ -105,6 +122,27 @@ button {
     text-align: center;
     font-family: 'Rubik', sans-serif;
 }
+
+#game-container
+{
+    display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+#widthNums
+{
+    word-spacing: 25px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+#heightNums {
+    font-size: 9px;
+}
+
 
 #secret
 {

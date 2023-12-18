@@ -6,6 +6,7 @@ let levelMessage = document.getElementById('levelMessage');
 const confettiContainer = document.getElementById('confetti-container');
 const trash = document.getElementById('trash');
 let info = document.getElementById('info');
+let amountIn = document.getElementById('amountIn');
 
 let cubeSize = 30;
 game.style.backgroundSize = `${cubeSize}px ${cubeSize}px`;
@@ -15,8 +16,8 @@ alien.style.height = `${cubeSize}px`;
 spaceship.style.width = `${cubeSize}px`;
 spaceship.style.height = `${cubeSize}px`;
 
-let gameW = rand(3, 20);
-let gameH = rand(3, 20);
+let gameW = rand(3, 10);
+let gameH = rand(3, 10);
 
 
 let finished = false;
@@ -61,29 +62,37 @@ function clamp(number, min, max) {
 
 function moveAlien(command) {
     let move = { command: command };
+    let input = 1;
 
-    switch (command) {
-        case 'UP':
-            move.newX = alienX;
-            move.newY = alienY - cubeSize;
-            break;
-        case 'DOWN':
-            move.newX = alienX;
-            move.newY = alienY + cubeSize;
-            break;
-        case 'LEFT':
-            move.newX = alienX - cubeSize;
-            move.newY = alienY;
-            break;
-        case 'RIGHT':
-            move.newX = alienX + cubeSize;
-            move.newY = alienY;
-            break;
+    if (amountIn.value !== '')
+        input = parseInt(amountIn.value);
+
+    for (var i = 0; i <= input - 1; i++) {
+        switch (command) {
+            case 'UP':
+                move.newX = alienX;
+                move.newY = alienY - cubeSize;
+                break;
+            case 'DOWN':
+                move.newX = alienX;
+                move.newY = alienY + cubeSize;
+                break;
+            case 'LEFT':
+                move.newX = alienX - cubeSize;
+                move.newY = alienY;
+                break;
+            case 'RIGHT':
+                move.newX = alienX + cubeSize;
+                move.newY = alienY;
+                break;
+        }
+        let new_li = document.createElement('li');
+        new_li.innerText = command;
+        moves_ul.appendChild(new_li);
+        moveList.push(move);
     }
-    let new_li = document.createElement('li');
-    new_li.innerText = command;
-    moves_ul.appendChild(new_li);
-    moveList.push(move);
+
+    amountIn.value = '';
 }
 
 
@@ -95,7 +104,7 @@ function startPressAndHold(command) {
         let input = window.prompt('Enter your amount:');
 
         if (!isNaN(input)) {
-            for (var i = 0; i <= input-1; i++) {
+            for (var i = 0; i <= input; i++) {
                 switch (command) {
                     case 'UP':
                         move.newX = alienX;
@@ -126,6 +135,50 @@ function startPressAndHold(command) {
 function endPressAndHold() {
     // Clear the timer when the mouse button is released or leaves the element
     clearTimeout(pressAndHoldTimer);
+}
+
+let widthNums = document.getElementById("widthNums");
+
+for (var i = 1; i <= gameW; i++) {
+    widthNums.innerHTML += String(i) + ' ';
+}
+
+let heightNums = document.getElementById("heightNums");
+
+for (var i = 1; i <= gameH; i++) {
+    heightNums.innerHTML += String(i) + '<br>' + '<br>' + '<br>';
+}
+
+function dblMoveAlien(command) {
+    let move = { command: command };
+    var input = window.prompt('Enter your amount:');
+
+    if (!isNaN(input)) {
+        for (var i = 0; i <= input; i++) {
+            switch (command) {
+                case 'UP':
+                    move.newX = alienX;
+                    move.newY = alienY - 20;
+                    break;
+                case 'DOWN':
+                    move.newX = alienX;
+                    move.newY = alienY + 20;
+                    break;
+                case 'LEFT':
+                    move.newX = alienX - 20;
+                    move.newY = alienY;
+                    break;
+                case 'RIGHT':
+                    move.newX = alienX + 20;
+                    move.newY = alienY;
+                    break;
+            }
+            let new_li = document.createElement('li');
+            new_li.innerText = command;
+            moves_ul.appendChild(new_li);
+            moveList.push(move);
+        }
+    }
 }
 
 function replayMoves() {
@@ -169,8 +222,8 @@ function replayMoves() {
                 moveList = [];
                 alien.style.opacity = 0;
                 spaceship.src = "ufo.png";
-                spaceship.style.width = "20px";
-                spaceship.style.height = "25.6px";
+                spaceship.style.width = "25px";
+                spaceship.style.height = "32.06px";
                 spaceship.className = "fly";
                 finished = true;
 
@@ -207,6 +260,21 @@ moves_ul.addEventListener('click', function (event) {
         console.log('Clicked on:', event.target.textContent);
     }
 });
+
+function help()
+{
+    if (widthNums.className === "hidden")
+    {
+        widthNums.className = "visible";
+        heightNums.className = "visible";
+    }
+    else
+    {
+        widthNums.className = "hidden";
+        heightNums.className = "hidden";
+    }
+}
+
 // function celebrate() {
 //     const confettiContainer = document.getElementById('confetti-container');
 //     confettiContainer.style.pointerEvents = "all";
