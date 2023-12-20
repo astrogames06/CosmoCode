@@ -1,249 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200&family=Rubik:wght@300;400&family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium&display=swap');
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Rubik', sans-serif;
+body
+{
+    background-color: black;
 }
 
-#game
+#corner-img
 {
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-    position: relative;
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
-    background-size: 20px 20px;
-    margin: 0 auto;
-    z-index: -1;
-    border-radius: 5px;
+    width: 100px;
 }
 
-#next-btn
+#main-contents
 {
-    width: 200px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 25px;
-    background-color: #00f2ff;
-    border: none;
-    border-radius: 15px;
-}
-
-#run
-{
-    border: none;
-    border-radius: 15px;
-    background-color: #2fff00;
-    margin-bottom: 10px;
-    margin-right: 80px;
-    margin-left: -10px;
-}
-
-#trash
-{
-    margin-top: 10px;
-    border: none;
-    border-radius: 50px;
-    width: 50px;
-    background-color: #ff0000;
+    margin-top: -5px;
     margin-left: 50px;
 }
 
-#run-container
+#im-w
 {
-    display: flex;
-    justify-content: center;
+    color:white;
+    display: inline;
+    font-size: 70px;
+    font-family: 'Oxanium', sans-serif;
 }
 
-button {
-    width: 60px;
-    height: 50px;
-    text-align: center;
-    padding: 0px;
-    font-family: 'Rubik', sans-serif;
+#astro-w
+{
+    color: #00A3FF;
+    display: inline;
+    font-size: 70px;
+    font-family: 'Oxanium', sans-serif;
+}
+
+#intro
+{
+    margin-top: -10px;
+    width: 500px;
+}
+
+.plain-text
+{
+    text-align: left;
     color: white;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 20px;
 }
 
-#buttons
+#lt
 {
-    text-align: center;
+    margin-top: -25px;
 }
 
-#amountIn
+#langs
 {
-    margin-top: 10px;
-    border: none;
-    border-radius: 15px;
-    background-color: #f6ff00;
-    color: rgb(0, 0, 0);
-    padding-left: 10px;
-    height: 30px;
-    font-size: large;
+    list-style-type: none;
+    padding: 0;
+    margin-top: -15px;
 }
 
-#amountIn::placeholder
+.js
 {
-    color: rgb(0, 0, 0);
+    border-radius: 10px;
 }
 
-#moves-ul
+#langs li
 {
-    display: grid;
-    justify-content: center;
+    display: inline;
 }
 
-.move-btn
+#langs li img
 {
-    border: none;
-    border-radius: 15px;
-    background-color: #00f2ff;
+    width: 40px;
+    margin-right: 15px;
 }
 
-#alien
+.title
 {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: top 0.2s ease-in-out, left 0.2s ease-in-out;
-}
-
-#game p
-{
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-}
-
-#game-container
-{
-    display: flex;
-      justify-content: center;
-      align-items: center;
-}
-
-#widthNums
-{
-    word-spacing: 25px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 10px;
-}
-
-#heightNums {
-    font-size: 9px;
-}
-
-
-#secret
-{
-    float: right;
-    opacity: 0;
-}
-
-#help
-{
-    width: 50px;
-    float: right;
-    background: none;
-    border: none;
+    text-align: left;
     color: white;
-    white-space: nowrap;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 25px;
+    width: 500px;
+    font-weight: bold;
+    background-color: #36AFFF;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: fit-content;
+    margin-top: 5px;
 }
 
-#help img
+
+#projects
 {
-    width: 30px;
+    list-style-type: none;
+    padding: 0;
+    margin-top: -5px;
 }
 
-#help:hover
+#projects li
 {
-    color: black;
+    display: inline;
 }
 
-#info
+#projects li
 {
-    background-color: #00f2ff;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    margin: 10px auto;
-    border-radius: 15px;
-    width: 150px;
-    z-index: -1;
+    display: inline;
 }
 
-#spaceship
-{
-    width: 20px;
-    height: 20px;
-    position: absolute;
-}
 
-#levelMessage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 256px;
-}
-
-@keyframes flyUp
+#projects li img
 {
-    to
-    {
-        transform: translateY(-50vh);
-    }
-}
-.fly
-{
-    animation: flyUp 2s ease-in-out forwards;
-}
-.hidden
-{
+    width: 400px;
+    margin-right: 15px;
     transition: 0.2s;
-    display: none;
 }
-.visible
+
+#projects li img:hover
 {
-    display: block; /* or any other appropriate display property */
+    transform: scale(1.05);
 }
 
-#confetti-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+#am
+{
+    margin-top: -15px;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(720deg);
-    }
-}
-
-.confetti {
-    position: absolute;
-    top: 0;
-    transform-origin: top left;
-    pointer-events: none;
+#sm-btn
+{
+    margin-top: -10px;
+    width: 100px;
 }
