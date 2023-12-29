@@ -1,1 +1,1 @@
-# AlienCodingGame
+# CosmoCode
