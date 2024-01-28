@@ -8,6 +8,12 @@ const trash = document.getElementById('trash');
 let info = document.getElementById('info');
 let amountIn = document.getElementById('amountIn');
 
+let level_store = localStorage.getItem('level');
+let level = JSON.parse(level_store);
+let levelHeading = document.getElementById('level');
+
+levelHeading.innerText = `level ${level_store}`;
+
 let cubeSize = 30;
 game.style.backgroundSize = `${cubeSize}px ${cubeSize}px`;
 
@@ -241,6 +247,9 @@ function celebrate() {
     jsConfetti.addConfetti({
         emojis: ['👍', '😂', '🎉', '🔥', '🥳', '😎', '👌', '💪', '🤩', '🦄', '💩'],
     });
+    level++;
+    localStorage.setItem("level", JSON.stringify(level))
+    levelHeading.innerText = `level ${JSON.parse(level_store)}`;
 }
 
 trash.addEventListener('click', () => {
@@ -274,36 +283,3 @@ function help()
         heightNums.className = "hidden";
     }
 }
-
-// function celebrate() {
-//     const confettiContainer = document.getElementById('confetti-container');
-//     confettiContainer.style.pointerEvents = "all";
-
-//     for (let i = 0; i < 200; i++) {
-//         createConfettiParticle(confettiContainer);
-//     }
-// }
-
-// function createConfettiParticle(container) {
-//     const colors = ['#f00', '#0f0', '#00f', '#ff0', '#0ff']; // Customize colors as needed
-
-//     const confetti = document.createElement('div');
-//     confetti.className = 'confetti';
-//     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-//     const size = Math.random() * 20 + 10; // Random size between 10 and 30 pixels
-//     confetti.style.width = `${size}px`;
-//     confetti.style.height = `${size}px`;
-
-//     const left = Math.random() * 100;
-//     confetti.style.left = `${left}vw`;
-
-//     const animationDuration = Math.random() * 3 + 2; // Random duration between 2 and 5 seconds
-//     confetti.style.animation = `fall ${animationDuration}s linear infinite`;
-
-//     container.appendChild(confetti);
-
-//     confetti.addEventListener('animationend', () => {
-//         confetti.remove(); // Remove confetti after animation ends
-//     });
-// }

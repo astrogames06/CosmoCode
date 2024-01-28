@@ -75,6 +75,7 @@ button {
 
 #amountIn
 {
+    font-family: 'Rubik', sans-serif;
     margin-top: 10px;
     border: none;
     border-radius: 15px;
@@ -88,6 +89,11 @@ button {
 #amountIn::placeholder
 {
     color: rgb(0, 0, 0);
+}
+
+#amountIn:focus
+{
+    outline: none;
 }
 
 #moves-ul
@@ -161,7 +167,7 @@ button {
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin: 10px auto;
+    margin: 15px auto;
 }
 
 #help img
@@ -184,6 +190,11 @@ button {
     border-radius: 15px;
     width: 150px;
     z-index: -1;
+}
+
+#level
+{
+    text-align: center;
 }
 
 #spaceship
